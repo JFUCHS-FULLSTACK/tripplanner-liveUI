@@ -11,13 +11,14 @@
                 <div class="panel-body" id="options-panel">
                     <div>
                         <h4>Hotels</h4>
+                            {% for hotel in hotels %}
+                              <a id="{{hotel.name}}" data-type="{{hotel.place.location}}" class="allTheHotelsLocations" style="display:none">{{hotel.place.location}} {{hotel.name}}</a>
+                              
+                            {% endfor %}
                         <select data-type="hotel" id="hotel-choices">
                             {% for hotel in hotels %}
-                            <option class="allTheHotels">{{hotel.name}}
-                              {% for place in places %}
-                              <span class='hiddenHotelData'>{{place.location}}</span>
-                              {% endfor %}
-                            </option>
+                            <!-- <a>{{hotel.place.location}}</a> -->
+                            <option class="allTheHotels">{{hotel.name}}</option>
                             {% endfor %}
                         </select>
                         <button data-action="add" class="btn btn-primary btn-circle pull-right" id="hotel-choices-btn">+</button>

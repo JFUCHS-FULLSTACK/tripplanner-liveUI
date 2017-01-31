@@ -67,11 +67,28 @@ $(function initializeMap (){
     $myHotel = $myHotel.empty();
     $myHotel.append($hotelName);
     // drawMarker('hotel', [40.705137, -74.007624]);
-    // console.log($myHotel.contents()[0]);
-    console.log($('.hiddenHotelData'));
-});
+    console.log($myHotel.contents()[0].data);
+    let hotelID = '#'+ $myHotel.contents()[0].data;
+    // id = $myHotel.contents()[0] + ' Location'
+    let hotelLocationArray = $('.allTheHotelsLocations');
+    // console.log(hotelLocationArray[0].id === $hotelName)
+
+    for (var i=0;i<hotelLocationArray.length;i++){
+      if (hotelLocationArray[i].id === $hotelName){
+        let janky = hotelLocationArray[i].dataset.type;
+        drawMarker('hotel', janky.split(','));
+      }
+    }
+
+
+
+
+
+    // console.log(hotelLocationArray.filter(function(elem){return elem.id === $hotelName})); //and then filter the <a> elements that have the ID that equlas the name of the hotel that we selected. and then get the value of that element
+
 
 let restaurantClickCount = 0;
+let randomCounterThignForTesting = 0;
 $('#restaurant-choices-btn').on('click', function(evt) {
     evt.preventDefault();
     const $restaurantName = $('#restaurant-choices').val();
@@ -79,10 +96,15 @@ $('#restaurant-choices-btn').on('click', function(evt) {
       $('#restaurant-itinerary').empty();
       restaurantClickCount++;
     }
-    const $newRestaurant = $('<div class="itinerary-item"><li class="title">' + $restaurantName + '</li><button class="btn btn-xs btn-danger remove btn-circle">x</button></div>');
+
+
+    const $newRestaurant = $('<div class="itinerary-item"><li class="title" id="counter' + randomCounterThignForTesting + '">' + $restaurantName + '</li><button class="btn btn-xs btn-danger remove btn-circle">x</button></div>');
+    randomCounterThignForTesting++;
   $('#restaurant-itinerary').append($newRestaurant);
     console.log($restaurantName);
 });
+
+
 
 let activityClickCount = 0;
 $('#activity-choices-btn').on('click', function(evt) {
@@ -97,4 +119,16 @@ $('#activity-choices-btn').on('click', function(evt) {
 });
 
 });
+
+
+
+
+
+
+
+
+
+
+
+
 
