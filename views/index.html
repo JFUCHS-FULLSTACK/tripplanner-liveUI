@@ -57,9 +57,11 @@
                         <button class="btn btn-circle day-btn current-day">1</button>
                         <button class="btn btn-circle day-btn">2</button>
                         <button class="btn btn-circle day-btn">3</button>
+
                         <button class="btn btn-circle day-btn" id="day-add">+</button>
                     </div>
                 </div>
+              <span id="day1">
                 <div class="panel-body" id="itinerary">
                     <div>
                         <h4>My Hotel</h4>
@@ -89,27 +91,16 @@
                         </ul>
                     </div>
                 </div>
+              </span>
             </div>
         </div>
     </div>
 </div>
 <script>
 var hotels = {{ hotels | dump | safe }};
-var restaurants = {
-    {
-        restaurants | dump | safe
-    }
-};
-var activities = {
-    {
-        activities | dump | safe
-    }
-};
-var places = {
-    {
-        places | dump | safe
-    }
-};
+var restaurants = {{ restaurants | dump | safe }};
+var activities = {{ activities | dump | safe }};
+var places = {{ places | dump | safe }};
 </script>
 
 {% endblock %}
